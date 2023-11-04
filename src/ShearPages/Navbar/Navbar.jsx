@@ -1,7 +1,14 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Navbar = () => {
-  const user = "habiburrahmanofficial157@gmail.com";
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleSingOut = () => {
+    logOut().then().catch();
+  };
+
   const NavLinks = (
     <>
       <li>
@@ -10,12 +17,24 @@ const Navbar = () => {
       <li>
         <Link to="/allJobs">All Jobs</Link>
       </li>
-      <li>
-        <Link to="/appliedJobs">Applied Jobs</Link>
-      </li>
-      <li>
-        <Link to="/addJob">Add Job</Link>
-      </li>
+      <>
+        {user?.email ? (
+          <>
+            <li>
+              <Link to="/appliedJobs">Applied Jobs</Link>
+            </li>
+            <li>
+              <Link to="/addJob">Add Job</Link>
+            </li>
+            <li>
+              <Link to="/myJob">My job</Link>
+            </li>
+          </>
+        ) : (
+          ""
+        )}
+      </>
+
       <li>
         <Link to="/blog">Blogs</Link>
       </li>
@@ -61,7 +80,11 @@ const Navbar = () => {
             <label tabIndex={0} className="cursor-pointer">
               <div className="avatar">
                 <div className="w-10 rounded-full">
-                  <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=1964&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+                  <img
+                    className="rounded-full w-12"
+                    src={user?.photoURL}
+                    alt=""
+                  />
                 </div>
               </div>
             </label>
@@ -74,11 +97,9 @@ const Navbar = () => {
                 Profile
               </NavLink>
 
-              <div
-                //   onClick={logout}
-                className="cursor-pointer text-red-500 px-4 py-2 hover:bg-base-300 rounded-lg">
-                Logout
-              </div>
+              <button onClick={handleSingOut} className="btn">
+                Log Out
+              </button>
             </div>
           </div>
         ) : (

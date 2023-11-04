@@ -1,8 +1,35 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
+
+import Swal from "sweetalert2";
 
 const Login = () => {
+  const { singIn, signInWithGoogle } = useContext(AuthContext);
+
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+      .then((result) => {})
+      .catch((err) => {});
+  };
   const handleLogin = (e) => {
     e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+
+    singIn(email, password)
+      .then(() => {
+        Swal.fire("success Login!", "thank you!", "success");
+      })
+      .catch(() => {
+        Swal.fire(
+          "please provide right email and password!",
+          "thank you!",
+          "error"
+        );
+      });
   };
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -53,6 +80,11 @@ const Login = () => {
               />
             </div>
           </form>
+          <p className="mb-5 text-white">
+            <button onClick={handleGoogleSignIn} className="btn btn-primary">
+              Google
+            </button>
+          </p>
           <p className="my-5 text-center">
             New to Job Search
             <Link className="text-orange-600 font-bold" to="/register">
