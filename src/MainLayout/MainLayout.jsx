@@ -4,7 +4,7 @@ import Footer from "../ShearPages/Footer/Footer";
 
 const MainLayout = () => {
   return (
-    <div className="h-screen w-[1200px] mx-auto">
+    <div className="h-screen  lg:w-[1200px] mx-auto">
       <Navbar></Navbar>
       <Outlet></Outlet>
       <Footer></Footer>
