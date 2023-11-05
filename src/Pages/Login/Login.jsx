@@ -1,16 +1,21 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { FcGoogle } from "react-icons/fc";
 
 import Swal from "sweetalert2";
 
 const Login = () => {
   const { singIn, signInWithGoogle } = useContext(AuthContext);
 
+  
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const handleGoogleSignIn = () => {
     signInWithGoogle()
-      .then((result) => {})
-      .catch((err) => {});
+      .then(() => {})
+      .catch(() => {});
   };
   const handleLogin = (e) => {
     e.preventDefault();
@@ -21,6 +26,7 @@ const Login = () => {
 
     singIn(email, password)
       .then(() => {
+        navigate(location?.state ? location.state : "/");
         Swal.fire("success Login!", "thank you!", "success");
       })
       .catch(() => {
@@ -74,20 +80,25 @@ const Login = () => {
             </div>
             <div className="form-control mt-6">
               <input
-                className="btn btn-primary"
+                className="btn text-white font-bold bg-sky-600 hover:bg-sky-600  "
                 type="submit"
                 value="Sign In"
               />
             </div>
           </form>
-          <p className="mb-5 text-white">
-            <button onClick={handleGoogleSignIn} className="btn btn-primary">
+          <div className="divider ">Or, Continue With</div>
+          <div className=" flex justify-center ">
+            <button
+              type="button"
+              onClick={handleGoogleSignIn}
+              className="btn btn-outline   flex justify-between items-center cursor-pointer w-2/3 hover:bg-sky-500  ">
               Google
+              <FcGoogle className="w-8 h-8" />
             </button>
-          </p>
+          </div>
           <p className="my-5 text-center">
             New to Job Search
-            <Link className="text-orange-600 font-bold" to="/register">
+            <Link className="ml-2 text-blue-600 font-bold" to="/register">
               Register
             </Link>
           </p>

@@ -12,6 +12,10 @@ import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 import AuthProvider from "./Provider/AuthProvider";
+import PrivetRoute from "./Route/PrivetRoute.jsx";
+import { Toaster } from "react-hot-toast";
+import Profile from "./Pages/Profile/Profile.jsx";
+import MyJob from "./Pages/MyJob/MyJob.jsx";
 
 const router = createBrowserRouter([
   {
@@ -37,7 +41,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/blog",
-        element: <Blogs></Blogs>,
+        element: (
+          <PrivetRoute>
+            <Blogs></Blogs>,
+          </PrivetRoute>
+        ),
       },
       {
         path: "/login",
@@ -47,6 +55,14 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register></Register>,
       },
+      {
+        path: "/profile",
+        element: <Profile></Profile>,
+      },
+      {
+        path: "/myJob",
+        element: <MyJob></MyJob>,
+      },
     ],
   },
 ]);
@@ -55,6 +71,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
       <RouterProvider router={router} />
+      <Toaster></Toaster>
     </AuthProvider>
   </React.StrictMode>
 );

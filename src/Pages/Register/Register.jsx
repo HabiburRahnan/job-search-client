@@ -1,11 +1,15 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import toast from "react-hot-toast";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
+
+
+  const navigate = useNavigate();
+
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -16,6 +20,7 @@ const Register = () => {
     console.log(name, photo, email, password);
     createUser(email, password)
       .then((result) => {
+        navigate(location?.state ? location.state : "/");
         toast.success("your register Successful!");
         updateProfile(result.user, {
           displayName: name,
@@ -93,15 +98,15 @@ const Register = () => {
             </div>
             <div className="form-control mt-6">
               <input
-                className="btn btn-primary"
+                className="btn text-white font-bold bg-sky-600 hover:bg-sky-600 "
                 type="submit"
                 value="Sign UP"
               />
             </div>
           </form>
           <p className="my-5 text-center">
-            Already Have an account
-            <Link className="text-orange-600 font-bold" to="/login">
+            Already Have an account 
+            <Link className="ml-2  text-blue-700 font-bold" to="/login">
               Sign In
             </Link>
           </p>

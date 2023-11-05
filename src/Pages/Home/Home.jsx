@@ -4,7 +4,11 @@ const Home = () => {
   return (
     <div>
       <Banner></Banner>
-      <h1>This is a Home page</h1>
+      <div className="tabs tabs-boxed">
+        <a className="tab">Tab 1</a>
+        <a className="tab ">Tab 2</a>
+        <a className="tab">Tab 3</a>
+      </div>
     </div>
   );
 };
