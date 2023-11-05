@@ -1,4 +1,4 @@
-const PartTime = (job) => {
+const AllJob = (job) => {
   const {
     name,
     username,
@@ -10,7 +10,7 @@ const PartTime = (job) => {
     job_type,
   } = job.jobs;
   return (
-    <div className="card-body border rounded-md border-blue-500 ">
+    <div className="card-body border rounded-md border-blue-500">
       <p className="card-title text-xl md:text-3xl font-extrabold text-blue-600">
         {job_title}
       </p>
@@ -36,4 +36,4 @@ const PartTime = (job) => {
   );
 };
 
-export default PartTime;
+export default AllJob;

@@ -4,7 +4,6 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainLayout from "./MainLayout/MainLayout";
 import Home from "./Pages/Home/Home";
-import AllJobs from "./Pages/AllJobs/AllJobs";
 import AppliedJobs from "./Pages/AppliedJobs/AppliedJobs";
 import AddAJob from "./Pages/AddAJob/AddAJob";
 import Blogs from "./Pages/Blogs/Blogs";
@@ -16,6 +15,7 @@ import PrivetRoute from "./Route/PrivetRoute.jsx";
 import { Toaster } from "react-hot-toast";
 import Profile from "./Pages/Profile/Profile.jsx";
 import MyJob from "./Pages/MyJob/MyJob.jsx";
+import ViewAllJobs from "./Pages/ViewAllJobs/ViewAllJobs.jsx";
 
 const router = createBrowserRouter([
   {
@@ -27,13 +27,14 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
       },
-      {
-        path: "/allJobs",
-        element: <AllJobs></AllJobs>,
-      },
+
       {
         path: "/appliedJobs",
         element: <AppliedJobs></AppliedJobs>,
+      },
+      {
+        path: "/viewAllJobs",
+        element: <ViewAllJobs></ViewAllJobs>,
       },
       {
         path: "/addJob",
