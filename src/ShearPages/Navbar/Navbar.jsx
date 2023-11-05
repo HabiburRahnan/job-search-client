@@ -68,7 +68,7 @@ const Navbar = () => {
         <Link
           to="/"
           className=" btn  items-center normal-case text-xl font-extrabold">
-          JOB<span className=" text-blue-800">SEARCH</span>
+          JOB<span className=" text-[#3878E8]">SEARCH</span>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">

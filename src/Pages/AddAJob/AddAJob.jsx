@@ -1,11 +1,14 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Title from "../../Components/Title";
 import { AuthContext } from "../../Provider/AuthProvider";
+import DatePicker from "react-datepicker";
+import axios from "axios";
 
 const AddAJob = () => {
+  const [startDate, setStartDate] = useState(new Date());
   const { user } = useContext(AuthContext);
 
-  const handleBookService = (e) => {
+  const handleAddJob = (e) => {
     e.preventDefault();
     const form = e.target;
     const jobTitle = form.jobTitle.value;
@@ -13,8 +16,8 @@ const AddAJob = () => {
     const email = user?.email;
     const category = form.category.value;
     const salary = form.salary.value;
-    const postingDate = form.postingDate.value;
-    const applicationDate = form.applicationDate.value;
+    // const postingDate = form.postingDate.value;
+    // const applicationDate = form.applicationDate.value;
     const photo = form.photo.value;
     const applicationNumber = form.applicationNumber.value;
 
@@ -25,16 +28,38 @@ const AddAJob = () => {
       category,
       salary,
       photo,
-      postingDate,
-      applicationDate,
+      // postingDate,
+      // applicationDate,
       applicationNumber,
     };
-    console.log(addNewJob);
+    // console.log(addNewJob);
+
+    axios
+      .post("http://localhost:5000/addNewJobs", addNewJob)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    // fetch(`http://localhost:5000/addNewJobs`, {
+    //   method: "POST",
+    //   headers: {
+    //     "content-type": "application/json",
+    //   },
+    //   body: JSON.stringify(addNewJob),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data);
+    //   });
   };
+
   return (
     <div className="bg-[#F4F3F0] p-0 md:p-24">
       <Title>Add a New Job</Title>
-      <form onSubmit={handleBookService} className="mt-10">
+      <form onSubmit={handleAddJob} className="mt-10">
         <div className=" md:flex mb-0 md:mb-8">
           <div className="form-control w-full md:w-1/2">
             <label className="label">
@@ -120,7 +145,12 @@ const AddAJob = () => {
               />
             </label>
           </div>
-          <div className="form-control w-full md:w-1/2">
+
+          <DatePicker
+            selected={startDate}
+            onChange={(date) => setStartDate(date)}
+          />
+          {/* <div className="form-control w-full md:w-1/2">
             <label className="label">
               <span className="label-text">Application Deadline</span>
             </label>
@@ -132,7 +162,7 @@ const AddAJob = () => {
                 className="input input-bordered"
               />
             </label>
-          </div>
+          </div> */}
           <div className="form-control w-full md:w-1/2">
             <label className="label">
               <span className="label-text">Job Application Number</span>
