@@ -16,6 +16,7 @@ import { Toaster } from "react-hot-toast";
 import Profile from "./Pages/Profile/Profile.jsx";
 import MyJob from "./Pages/MyJob/MyJob.jsx";
 import ViewAllJobs from "./Pages/ViewAllJobs/ViewAllJobs.jsx";
+import ViewsDetails from "./Components/ViewsDetails/ViewsDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,16 @@ const router = createBrowserRouter([
       {
         path: "/appliedJobs",
         element: <AppliedJobs></AppliedJobs>,
+      },
+      {
+        path: "/viewsDetails/:id",
+        element: (
+          <PrivetRoute>
+            <ViewsDetails></ViewsDetails>
+          </PrivetRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/addNewJob/${params.id}`),
       },
       {
         path: "/viewAllJobs",
@@ -63,6 +74,7 @@ const router = createBrowserRouter([
       {
         path: "/myJob",
         element: <MyJob></MyJob>,
+        loader: () => fetch(`http://localhost:5000/addNewJob`),
       },
     ],
   },

@@ -1,102 +1,113 @@
 [
+  
   {
-    "name": "Emily Johnson",
-    "username": "emilyj23",
+    "jobTitle": "Emily Johnson",
+    "displayName": "emilyj23",
     "job_title": "Software Developer",
-    "job_posting_date": "2023-11-05",
-    "application_deadline": "2023-11-15",
-    "salary_range": "$70,000 - $90,000",
+    "postingDate": "2023-11-05",
+    "applicationDate": "2023-11-15",
+    "salary": "$70,000 - $90,000",
     "job_type": "Full-Time",
-    "job_applied_number": "0"
+    "photo": "https://i.ibb.co/559vvD9/software.jpg",
+    "applicationNumber": "0"
   },
   {
-    "name": "Michael Smith",
-    "username": "mikesmith45",
+    "jobTitle": "Michael Smith",
+    "displayName": "mikesmith45",
     "job_title": "Marketing Specialist",
-    "job_posting_date": "2023-11-06",
-    "application_deadline": "2023-11-16",
-    "salary_range": "$60,000 - $80,000",
+    "postingDate": "2023-11-06",
+    "applicationDate": "2023-11-16",
+    "salary": "$60,000 - $80,000",
     "job_type": "Part-Time",
-    "job_applied_number": "0"
+    "applicationNumber": "0",
+    "photo": "https://i.ibb.co/KskLfjQ/marka.jpg"
   },
   {
-    "name": "Sarah Davis",
-    "username": "sarahd88",
+    "jobTitle": "Sarah Davis",
+    "displayName": "sarahd88",
     "job_title": "Data Scientist",
-    "job_posting_date": "2023-11-07",
-    "application_deadline": "2023-11-17",
-    "salary_range": "$55,000 - $75,000",
+    "postingDate": "2023-11-07",
+    "applicationDate": "2023-11-17",
+    "salary": "$55,000 - $75,000",
     "job_type": "Remote",
-    "job_applied_number": "0"
+    "applicationNumber": "0",
+    "photo": "https://i.ibb.co/T2N8zhT/datasi.jpg"
   },
   {
-    "name": "David Brown",
-    "username": "davidb123",
+    "jobTitle": "David Brown",
+    "displayName": "davidb123",
     "job_title": "Graphic Designer",
-    "job_posting_date": "2023-11-08",
-    "application_deadline": "2023-11-18",
-    "salary_range": "$45,000 - $65,000",
+    "postingDate": "2023-11-08",
+    "applicationDate": "2023-11-18",
+    "salary": "$45,000 - $65,000",
     "job_type": "Freelance",
-    "job_applied_number": "0"
+    "applicationNumber": "0",
+    "photo": "https://i.ibb.co/CssWpPk/design.jpg"
   },
   {
-    "name": "Olivia Wilson",
-    "username": "oliviaw333",
+    "jobTitle": "Olivia Wilson",
+    "displayName": "oliviaw333",
     "job_title": "Account Manager",
-    "job_posting_date": "2023-11-09",
-    "application_deadline": "2023-11-19",
-    "salary_range": "$60,000 - $80,000",
+    "postingDate": "2023-11-09",
+    "applicationDate": "2023-11-19",
+    "salary": "$60,000 - $80,000",
     "job_type": "Remote",
-    "job_applied_number": "0"
+    "applicationNumber": "0",
+    "photo": "https://i.ibb.co/TvQ3cNP/maneger.jpg"
   },
   {
-    "name": "William Turner",
-    "username": "willt22",
+    "jobTitle": "William Turner",
+    "displayName": "willt22",
     "job_title": "Customer Service Representative",
-    "job_posting_date": "2023-11-10",
-    "application_deadline": "2023-11-20",
-    "salary_range": "$40,000 - $50,000",
+    "postingDate": "2023-11-10",
+    "applicationDate": "2023-11-20",
+    "salary": "$40,000 - $50,000",
     "job_type": "Temporary",
-    "job_applied_number": "0"
+    "applicationNumber": "0",
+    "photo": "https://i.ibb.co/QK3Rj9w/slase.jpg"
   },
   {
-    "name": "Sophia Harris",
-    "username": "sophiah99",
+    "jobTitle": "Sophia Harris",
+    "displayName": "sophiah99",
     "job_title": "Sales Associate",
-    "job_posting_date": "2023-11-11",
-    "application_deadline": "2023-11-21",
-    "salary_range": "$45,000 - $60,000",
+    "postingDate": "2023-11-11",
+    "applicationDate": "2023-11-21",
+    "salary": "$45,000 - $60,000",
     "job_type": "Full-Time",
-    "job_applied_number": "0"
+    "applicationNumber": "0",
+    "photo": "https://i.ibb.co/T2N8zhT/datasi.jpg"
   },
   {
-    "name": "Ethan Martinez",
-    "username": "ethanm1234",
+    "jobTitle": "Ethan Martinez",
+    "displayName": "ethanm1234",
     "job_title": "HR Coordinator",
-    "job_posting_date": "2023-11-12",
-    "application_deadline": "2023-11-22",
-    "salary_range": "$50,000 - $70,000",
+    "postingDate": "2023-11-12",
+    "applicationDate": "2023-11-22",
+    "salary": "$50,000 - $70,000",
     "job_type": "Part-Time",
-    "job_applied_number": "0"
+    "applicationNumber": "0",
+    "photo": "https://i.ibb.co/559vvD9/software.jpg"
   },
   {
-    "name": "Ava Lee",
-    "username": "avalee555",
+    "jobTitle": "Ava Lee",
+    "displayName": "avalee555",
     "job_title": "Product Manager",
-    "job_posting_date": "2023-11-13",
-    "application_deadline": "2023-11-23",
-    "salary_range": "$80,000 - $100,000",
+    "postingDate": "2023-11-13",
+    "applicationDate": "2023-11-23",
+    "salary": "$80,000 - $100,000",
     "job_type": "Full-Time",
-    "job_applied_number": "0"
+    "applicationNumber": "0",
+    "photo": "https://i.ibb.co/CssWpPk/design.jpg"
   },
   {
-    "name": "Jackson Taylor",
-    "username": "jacksontaylor77",
+    "jobTitle": "Jackson Taylor",
+    "displayName": "jacksontaylor77",
     "job_title": "Content Writer",
-    "job_posting_date": "2023-11-14",
-    "application_deadline": "2023-11-24",
-    "salary_range": "$45,000 - $60,000",
+    "postingDate": "2023-11-14",
+    "applicationDate": "2023-11-24",
+    "salary": "$45,000 - $60,000",
     "job_type": "Freelance",
-    "job_applied_number": "0"
+    "applicationNumber": "0",
+    "photo": "https://i.ibb.co/QK3Rj9w/slase.jpg"
   }
 ]

@@ -9,7 +9,7 @@ const HomePageTabs = () => {
   const [jobs, setJobs] = useState([]);
   const [dataLength, setDataLength] = useState(6);
   useEffect(() => {
-    fetch("jobPost.json")
+    fetch("http://localhost:5000/addNewJob")
       .then((res) => res.json())
       .then((data) => setJobs(data));
   }, []);

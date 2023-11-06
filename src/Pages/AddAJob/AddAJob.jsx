@@ -1,59 +1,54 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Title from "../../Components/Title";
 import { AuthContext } from "../../Provider/AuthProvider";
-import DatePicker from "react-datepicker";
-import axios from "axios";
+import Swal from "sweetalert2";
+// import DatePicker from "react-datepicker";
 
 const AddAJob = () => {
-  const [startDate, setStartDate] = useState(new Date());
+  // const [startDate, setStartDate] = useState(new Date());
   const { user } = useContext(AuthContext);
 
   const handleAddJob = (e) => {
     e.preventDefault();
     const form = e.target;
-    const jobTitle = form.jobTitle.value;
+    const job_title = form.job_title.value;
     const displayName = user?.displayName;
     const email = user?.email;
-    const category = form.category.value;
+    const job_type = form.job_type.value;
     const salary = form.salary.value;
-    // const postingDate = form.postingDate.value;
-    // const applicationDate = form.applicationDate.value;
+    const postingDate = form.postingDate.value;
+    const applicationDate = form.applicationDate.value;
     const photo = form.photo.value;
+    const description = form.description.value;
     const applicationNumber = form.applicationNumber.value;
 
     const addNewJob = {
-      jobTitle,
+      job_title,
       displayName,
+      description,
       email,
-      category,
+      job_type,
       salary,
       photo,
-      // postingDate,
-      // applicationDate,
+      postingDate,
+      applicationDate,
       applicationNumber,
     };
-    // console.log(addNewJob);
+    console.log(addNewJob);
 
-    axios
-      .post("http://localhost:5000/addNewJobs", addNewJob)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
+    fetch(`http://localhost:5000/addNewJob`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(addNewJob),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire("Jobs add successfully", "thank you!", "success");
+        }
       });
-
-    // fetch(`http://localhost:5000/addNewJobs`, {
-    //   method: "POST",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify(addNewJob),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //   });
   };
 
   return (
@@ -68,7 +63,7 @@ const AddAJob = () => {
             <label className="input-group">
               <input
                 type="text"
-                name="jobTitle"
+                name="job_title"
                 placeholder="Job Title"
                 className="input input-bordered w-full"
               />
@@ -91,13 +86,13 @@ const AddAJob = () => {
         <div className=" md:flex mb-0 md:mb-8">
           <div className="form-control w-full md:w-1/2">
             <label className="label">
-              <span className="label-text">Job Category</span>
+              <span className="label-text">Job job type</span>
             </label>
             <label className="input-group">
               <input
                 type="text"
-                name="category"
-                placeholder="Job Category"
+                name="job_type"
+                placeholder="Job job type"
                 className="input input-bordered w-full"
               />
             </label>
@@ -131,6 +126,21 @@ const AddAJob = () => {
             </label>
           </div>
         </div>
+        <div className="mb-8">
+          <div className="form-control md:w-full">
+            <label className="label">
+              <span className="label-text">Description</span>
+            </label>
+            <label className="input-group">
+              <input
+                type="text"
+                name="description"
+                placeholder="Description"
+                className="input input-bordered w-full"
+              />
+            </label>
+          </div>
+        </div>
         <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  items-center mb-0 md:mb-8">
           <div className="form-control w-full md:w-1/2">
             <label className="label">
@@ -146,11 +156,7 @@ const AddAJob = () => {
             </label>
           </div>
 
-          <DatePicker
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
-          />
-          {/* <div className="form-control w-full md:w-1/2">
+          <div className="form-control w-full md:w-1/2">
             <label className="label">
               <span className="label-text">Application Deadline</span>
             </label>
@@ -162,7 +168,7 @@ const AddAJob = () => {
                 className="input input-bordered"
               />
             </label>
-          </div> */}
+          </div>
           <div className="form-control w-full md:w-1/2">
             <label className="label">
               <span className="label-text">Job Application Number</span>
