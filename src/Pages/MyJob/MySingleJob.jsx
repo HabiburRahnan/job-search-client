@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
-const MySingleJob = ({ allJob }) => {
-  const { job_title, photo } = allJob;
-  console.log(allJob);
+const MySingleJob = ({ allJob, handleDelete }) => {
+  const { _id, job_title, photo } = allJob;
+
   return (
     <tbody>
       <tr>
         <th>
           <button
-            // onClick={() => handleDelete(_id)}
+            onClick={() => handleDelete(_id)}
             className="btn btn-sm btn-circle btn-outline">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +36,7 @@ const MySingleJob = ({ allJob }) => {
 
         <th>
           <button
-            //   onClick={() => handleConfirm(_id)}
+            // onClick={() => handleConfirm(_id)}
             className="btn btn-ghost ">
             Update
           </button>
