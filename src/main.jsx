@@ -17,6 +17,7 @@ import Profile from "./Pages/Profile/Profile.jsx";
 import MyJob from "./Pages/MyJob/MyJob.jsx";
 import ViewAllJobs from "./Pages/ViewAllJobs/ViewAllJobs.jsx";
 import ViewsDetails from "./Components/ViewsDetails/ViewsDetails.jsx";
+import UpdateJob from "./Pages/UpdateJob/UpdateJob.jsx";
 
 const router = createBrowserRouter([
   {
@@ -45,7 +46,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/viewAllJobs",
-        element: <ViewAllJobs></ViewAllJobs>,
+        element: (
+          <PrivetRoute>
+            <ViewAllJobs></ViewAllJobs>
+          </PrivetRoute>
+        ),
       },
       {
         path: "/addJob",
@@ -53,11 +58,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/blog",
-        element: (
-          <PrivetRoute>
-            <Blogs></Blogs>,
-          </PrivetRoute>
-        ),
+        element: <Blogs></Blogs>,
       },
       {
         path: "/login",
@@ -74,7 +75,12 @@ const router = createBrowserRouter([
       {
         path: "/myJob",
         element: <MyJob></MyJob>,
-        loader: () => fetch(`http://localhost:5000/addNewJob`),
+      },
+      {
+        path: "/updateJob/:id",
+        element: <UpdateJob></UpdateJob>,
+        loader: (params) =>
+          fetch(`http://localhost:5000/addNewJob/${params.params.id}`),
       },
     ],
   },

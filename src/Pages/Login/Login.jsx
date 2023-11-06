@@ -8,7 +8,6 @@ import Swal from "sweetalert2";
 const Login = () => {
   const { singIn, signInWithGoogle } = useContext(AuthContext);
 
-  
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -22,7 +21,6 @@ const Login = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
 
     singIn(email, password)
       .then(() => {

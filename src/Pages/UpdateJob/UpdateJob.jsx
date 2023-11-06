@@ -1,14 +1,25 @@
 import { useContext } from "react";
-import Title from "../../Components/Title";
 import { AuthContext } from "../../Provider/AuthProvider";
+import Title from "../../Components/Title";
+import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
-// import DatePicker from "react-datepicker";
-
-const AddAJob = () => {
-  // const [startDate, setStartDate] = useState(new Date());
+const UpdateJob = () => {
+  const updateOneJob = useLoaderData();
+  const {
+    _id,
+    job_title,
+    description,
+    job_type,
+    salary,
+    photo,
+    postingDate,
+    applicationDate,
+    applicationNumber,
+  } = updateOneJob;
+  console.log(updateOneJob);
   const { user } = useContext(AuthContext);
 
-  const handleAddJob = (e) => {
+  const updatedThisJob = (e) => {
     e.preventDefault();
     const form = e.target;
     const job_title = form.job_title.value;
@@ -22,7 +33,7 @@ const AddAJob = () => {
     const description = form.description.value;
     const applicationNumber = form.applicationNumber.value;
 
-    const addNewJob = {
+    const UpdatedJob = {
       job_title,
       displayName,
       description,
@@ -34,27 +45,32 @@ const AddAJob = () => {
       applicationDate,
       applicationNumber,
     };
-    console.log(addNewJob);
-
-    fetch(`http://localhost:5000/addNewJob`, {
-      method: "POST",
+    console.log(UpdatedJob);
+    fetch(`http://localhost:5000/addNewJob/${_id}`, {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(addNewJob),
+      body: JSON.stringify(UpdatedJob),
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.insertedId) {
-          Swal.fire("Jobs add successfully", "thank you!", "success");
+        console.log(data);
+        if (data.modifiedCount) {
+          Swal.fire({
+            title: "success!",
+            text: "Job updated successfully",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
         }
       });
   };
 
   return (
     <div className="bg-[#F4F3F0] p-0 md:p-24">
-      <Title>Add a New Job</Title>
-      <form onSubmit={handleAddJob} className="mt-10">
+      <Title>Update this Job</Title>
+      <form onSubmit={updatedThisJob} className="mt-10">
         <div className=" md:flex mb-0 md:mb-8">
           <div className="form-control w-full md:w-1/2">
             <label className="label">
@@ -65,6 +81,7 @@ const AddAJob = () => {
                 type="text"
                 name="job_title"
                 placeholder="Job Title"
+                defaultValue={job_title}
                 className="input input-bordered w-full"
               />
             </label>
@@ -93,6 +110,7 @@ const AddAJob = () => {
                 type="text"
                 name="job_type"
                 placeholder="Job job type"
+                defaultValue={job_type}
                 className="input input-bordered w-full"
               />
             </label>
@@ -106,6 +124,7 @@ const AddAJob = () => {
                 name="salary"
                 type="text"
                 placeholder="Salary Range"
+                defaultValue={salary}
                 className="input input-bordered w-full"
               />
             </label>
@@ -121,6 +140,7 @@ const AddAJob = () => {
                 type="text"
                 name="photo"
                 placeholder="photo url"
+                defaultValue={photo}
                 className="input input-bordered w-full"
               />
             </label>
@@ -136,6 +156,7 @@ const AddAJob = () => {
                 type="text"
                 name="description"
                 placeholder="Description"
+                defaultValue={description}
                 className="input input-bordered w-full"
               />
             </label>
@@ -151,6 +172,7 @@ const AddAJob = () => {
                 type="date"
                 name="postingDate"
                 placeholder="date"
+                defaultValue={postingDate}
                 className="input input-bordered"
               />
             </label>
@@ -165,6 +187,7 @@ const AddAJob = () => {
                 type="date"
                 name="applicationDate"
                 placeholder="date"
+                defaultValue={applicationDate}
                 className="input input-bordered"
               />
             </label>
@@ -178,6 +201,7 @@ const AddAJob = () => {
                 type="number"
                 name="applicationNumber"
                 placeholder="Job Application Number"
+                defaultValue={applicationNumber}
                 className="input input-bordered"
               />
             </label>
@@ -186,7 +210,7 @@ const AddAJob = () => {
 
         <input
           type="submit"
-          value="Add A New Job"
+          value="Update job"
           className="btn btn-block text-white bg-blue-500 hover:bg-blue-500 my-10"
         />
       </form>
@@ -194,4 +218,4 @@ const AddAJob = () => {
   );
 };
 
-export default AddAJob;
+export default UpdateJob;

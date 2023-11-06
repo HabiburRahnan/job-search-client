@@ -1,14 +1,28 @@
-import { useContext, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+// import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import MySingleJob from "./MySingleJob";
 import Swal from "sweetalert2";
+// import axios from "axios";
 
 const MyJob = () => {
-  const allJObs = useLoaderData();
   const { user } = useContext(AuthContext);
+  const [myAllJObs, setMyAllJObs] = useState([]);
 
-  const [myAllJObs, setMyAllJObs] = useState(allJObs);
+  const url = `http://localhost:5000/job?email=${user?.email}`;
+
+  useEffect(() => {
+    // axios(url, { withCredentials: true }).then((res) => {
+    //   setMyAllJObs(res.data);
+    // });
+
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setMyAllJObs(data);
+      });
+  }, [url]);
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -28,7 +42,7 @@ const MyJob = () => {
             if (data.deletedCount > 0) {
               Swal.fire("Deleted!", "Your job has been deleted.", "success");
 
-              const remaining = myAllJObs.filter(
+              const remaining = myAllJObs?.filter(
                 (product) => product._id !== id
               );
               setMyAllJObs(remaining);

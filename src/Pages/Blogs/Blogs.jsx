@@ -68,15 +68,15 @@ const Blogs = () => {
       <div>
         <div className="relative border-s-8 border-[#3878E8] ps-3">
           <h2 className="text-xl md:text-3xl font-bold">
-            Front-End (React with Tailwind CSS and DaisyUI):
+            Front-End (React with Tailwind CSS and DaisyUI ):
           </h2>
           <p className="absolute bottom-0 text-5xl -z-10 opacity-5">
-            Front-End (React with Tailwind CSS and DaisyUI):
+            Front-End (React with Tailwind CSS and DaisyUI ):
           </p>
         </div>
         <p className="text-xl py-5">
           <span className="text-2xl font-semibold">
-            Set Up a React Project:{" "}
+            Set Up a React Project:
           </span>
           i Create a new React project using a tool like Create React App.
           Install and set up Tailwind CSS and DaisyUI in your project.

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 /* eslint-disable react/prop-types */
 const MySingleJob = ({ allJob, handleDelete }) => {
   const { _id, job_title, photo } = allJob;
@@ -35,11 +37,12 @@ const MySingleJob = ({ allJob, handleDelete }) => {
         <td className="">{job_title}</td>
 
         <th>
-          <button
+          <Link
+            to={`/updateJob/${_id}`}
             // onClick={() => handleConfirm(_id)}
             className="btn btn-ghost ">
             Update
-          </button>
+          </Link>
         </th>
       </tr>
     </tbody>
