@@ -3,10 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
-
 
   const navigate = useNavigate();
 
@@ -34,6 +34,11 @@ const Register = () => {
 
   return (
     <div className="hero min-h-screen bg-base-200">
+      <Helmet>
+        <meta charset="utf-8" />
+        <title>Register | Job Search</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <div className="hero-content flex-col lg:flex-row ">
         <div className=" w-1/2 mr-12">
           <img
@@ -105,7 +110,7 @@ const Register = () => {
             </div>
           </form>
           <p className="my-5 text-center">
-            Already Have an account 
+            Already Have an account
             <Link className="ml-2  text-blue-700 font-bold" to="/login">
               Sign In
             </Link>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import SingleJob from "./SingleJob";
+import { Helmet } from "react-helmet";
 
 const ViewAllJobs = () => {
   const [jobs, setJobs] = useState([]);
@@ -12,6 +13,11 @@ const ViewAllJobs = () => {
 
   return (
     <div className="mb-10">
+      <Helmet>
+        <meta charset="utf-8" />
+        <title>AllJobs | Job Search</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-0 md:gap-5 mt-10">
         {jobs?.slice(0, dataLength).map((job, index) => (
           <SingleJob key={index} jobs={job}></SingleJob>

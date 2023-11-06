@@ -1,8 +1,14 @@
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
 const ErrorPage = () => {
   return (
     <div className="">
+      <Helmet>
+        <meta charset="utf-8" />
+        <title>ErrorPage | Job Search</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <h1 className="text-4xl "> Unexpected Application Error!</h1>
       <img
         className="h-full w-1/2  "

@@ -1,6 +1,13 @@
+import { Helmet } from "react-helmet";
+
 const Blogs = () => {
   return (
     <div className="my-10">
+      <Helmet>
+        <meta charset="utf-8" />
+        <title>Blog | Job Search</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <div>
         <div className="relative border-s-8 border-[#3878E8] ps-3">
           <h2 className="text-xl md:text-3xl font-bold">

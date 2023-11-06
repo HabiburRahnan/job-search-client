@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import MySingleJob from "./MySingleJob";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 // import axios from "axios";
 
 const MyJob = () => {
@@ -54,6 +55,11 @@ const MyJob = () => {
 
   return (
     <div className="overflow-x-auto">
+      <Helmet>
+        <meta charset="utf-8" />
+        <title>MyJob | Job Search</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <table className="table">
         <thead>
           <tr>

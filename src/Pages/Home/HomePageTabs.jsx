@@ -29,6 +29,7 @@ const HomePageTabs = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-0 md:gap-5 mt-10">
               {jobs?.slice(0, dataLength)?.map((job, index) => (
                 <>
+                
                   <AllJob key={index} jobs={job}></AllJob>
                 </>
               ))}

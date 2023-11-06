@@ -4,6 +4,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
 
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const { singIn, signInWithGoogle } = useContext(AuthContext);
@@ -37,6 +38,11 @@ const Login = () => {
   };
   return (
     <div className="hero min-h-screen bg-base-200">
+      <Helmet>
+        <meta charset="utf-8" />
+        <title>Login | Job Search</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <div className="hero-content flex-col lg:flex-row ">
         <div className=" w-1/2 mr-12">
           <img

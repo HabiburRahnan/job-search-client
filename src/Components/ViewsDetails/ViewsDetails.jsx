@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const ViewsDetails = () => {
   const viewJob = useLoaderData();
@@ -48,7 +49,6 @@ const ViewsDetails = () => {
                 icon: "success",
                 confirmButtonText: "Cool",
               });
-              <Link to=""></Link>;
             }
           });
       } else {
@@ -62,8 +62,14 @@ const ViewsDetails = () => {
       console.log("u have not apply");
     }
   };
+
   return (
     <div>
+      <Helmet>
+        <meta charset="utf-8" />
+        <title>ViewsDetails | Job Search</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <div className="card  bg-base-100 shadow-xl">
         <img className="lg:h-[500px] w-full" src={photo} alt="Shoes" />
 
@@ -94,10 +100,83 @@ const ViewsDetails = () => {
               <p>Applicants:{applicationNumber}</p>
             </div>
             <button
-              onClick={handleApplyJob}
-              className="btn  bg-blue-600 hover:bg-blue-600 text-white">
-              Apply This Job
+              className="btn  text-white bg-blue-500 hover:bg-blue-500 my-10"
+              onClick={() => document.getElementById("my_modal_5").showModal()}>
+              Apply Now
             </button>
+
+            <dialog id="my_modal_5" className="modal  modal-middle">
+              <div className="modal-box ">
+                <h1 className="text-2xl font-bold mb-10 text-blue-600 text-center">
+                  Apply Now
+                </h1>
+                <form>
+                  <div className=" md:flex mb-0 md:mb-8">
+                    <div className="form-control  md:w-1/2">
+                      <label className="label">
+                        <span className="label-text">Job Title</span>
+                      </label>
+                      <label className="input-group">
+                        <input
+                          type="text"
+                          name="job_title"
+                          placeholder="Job Title"
+                          defaultValue={job_title}
+                          className="input input-bordered "
+                        />
+                      </label>
+                    </div>
+                    <div className="form-control  md:w-1/2 ml-0 md:ml-4">
+                      <label className="label">
+                        <span className="label-text">User Name</span>
+                      </label>
+                      <label className="input-group">
+                        <input
+                          name="userName"
+                          type="text"
+                          defaultValue={user?.displayName}
+                          className="input input-bordered "
+                        />
+                      </label>
+                    </div>
+                  </div>
+                  <div className=" md:flex mb-0 md:mb-8">
+                    <div className="form-control  md:w-1/2">
+                      <label className="label">
+                        <span className="label-text">Email</span>
+                      </label>
+                      <label className="input-group">
+                        <input
+                          type="text"
+                          name="Email"
+                          placeholder="Email"
+                          defaultValue={user.email}
+                          className="input input-bordered "
+                        />
+                      </label>
+                    </div>
+                    <div className="form-control  md:w-1/2 ml-0 md:ml-4">
+                      <label className="label">
+                        <span className="label-text">Resume URL</span>
+                      </label>
+                      <label className="input-group">
+                        <input
+                          name="resume"
+                          type="url"
+                          placeholder="Resume URL"
+                          className="input input-bordered "
+                        />
+                      </label>
+                    </div>
+                  </div>
+                  <button
+                    onClick={handleApplyJob}
+                    className="btn  text-white bg-blue-500 hover:bg-blue-500 my-10">
+                    Apply confirm
+                  </button>
+                </form>
+              </div>
+            </dialog>
           </div>
         </div>
       </div>

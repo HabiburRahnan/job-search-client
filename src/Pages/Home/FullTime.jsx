@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
 const FullTime = (job) => {
@@ -14,6 +15,11 @@ const FullTime = (job) => {
   } = job.jobs;
   return (
     <div className="card-body h-96 mt-5 md:mt-10 border rounded-md border-blue-500">
+      <Helmet>
+        <meta charset="utf-8" />
+        <title>FullTime | Job Search</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <p className="card-title text-xl md:text-3xl font-extrabold text-blue-600">
         {job_title}
       </p>

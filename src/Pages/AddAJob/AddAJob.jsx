@@ -2,6 +2,7 @@ import { useContext } from "react";
 import Title from "../../Components/Title";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 // import DatePicker from "react-datepicker";
 
 const AddAJob = () => {
@@ -53,6 +54,11 @@ const AddAJob = () => {
 
   return (
     <div className="bg-[#F4F3F0] p-0 md:p-24">
+      <Helmet>
+        <meta charset="utf-8" />
+        <title>AddJob | Job Search</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <Title>Add a New Job</Title>
       <form onSubmit={handleAddJob} className="mt-10">
         <div className=" md:flex mb-0 md:mb-8">
