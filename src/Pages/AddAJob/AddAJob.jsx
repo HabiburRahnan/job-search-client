@@ -37,7 +37,7 @@ const AddAJob = () => {
     };
     console.log(addNewJob);
 
-    fetch(`http://localhost:5000/addNewJob`, {
+    fetch(`https://job-search-server-gamma.vercel.app/addNewJob`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

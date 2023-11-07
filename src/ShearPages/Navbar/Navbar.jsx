@@ -5,6 +5,8 @@ import { AuthContext } from "../../Provider/AuthProvider";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
 
+  const name = user?.displayName;
+
   const handleSingOut = () => {
     logOut().then().catch();
   };
@@ -76,12 +78,12 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         {user?.email ? (
-          <div className="dropdown dropdown-end ">
+          <div className={`dropdown dropdown-end group-hover:${name}`}>
             <label tabIndex={0} className="cursor-pointer">
               <div className="avatar">
                 <div className="w-10 rounded-full">
                   <img
-                    className="rounded-full w-12"
+                    className={`rounded-full w-12 `}
                     src={user?.photoURL}
                     alt=""
                   />

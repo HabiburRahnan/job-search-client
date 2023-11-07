@@ -11,19 +11,27 @@ import Remote from "./Remote";
 import Loading from "../../ShearPages/Loading/Loading";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+// import useAxiosSecure from "../../hooks/useAxiosSecure";
+// import { useEffect } from "react";
 
 const AppliedJobs = () => {
   const { user } = useContext(AuthContext);
-  // console.log(user?.email);
   const [jobs, setJobs] = useState([]);
+  // const axiosSecure = useAxiosSecure();
+  // const url = "/applyJob";
 
   const { isLoading } = useQuery({
     queryKey: ["repoData"],
 
     queryFn: () =>
-      fetch(`http://localhost:5000/applyJob`)
+      fetch(`https://job-search-server-gamma.vercel.app/applyJob`, {
+        credentials: "include",
+      })
         .then((res) => res.json())
         .then((data) => setJobs(data)),
+    // useEffect(() => {
+    //   axiosSecure.get(url).then((res) => setJobs(res.data));
+    // }, [axiosSecure]);
   });
 
   if (isLoading) return <Loading></Loading>;

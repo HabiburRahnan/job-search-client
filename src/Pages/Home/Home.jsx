@@ -34,6 +34,9 @@ const Home = () => {
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
       <Banner></Banner>
+      <h1 className="text-xl md:text-4xl text-center font-bold text-orange-500 py-5">
+        Job y category section
+      </h1>
       <HomePageTabs></HomePageTabs>
       <div className="pb-5">
         <h1 className="text-xl md:text-4xl text-center font-bold text-orange-500 py-5">

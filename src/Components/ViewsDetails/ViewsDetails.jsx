@@ -3,10 +3,12 @@ import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { Helmet } from "react-helmet";
+import { usePDF } from "react-to-pdf";
 
 const ViewsDetails = () => {
   const viewJob = useLoaderData();
   const { user } = useContext(AuthContext);
+  const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
 
   const {
     displayName,
@@ -53,7 +55,7 @@ const ViewsDetails = () => {
     if (Date.parse(applicationDate) >= currentDate) {
       if (user?.email !== applyEmail) {
         Swal.fire("Apply Job success!", "You clicked the button!", "success");
-        fetch(`http://localhost:5000/applyJob`, {
+        fetch(`https://job-search-server-gamma.vercel.app/applyJob`, {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -139,7 +141,7 @@ const ViewsDetails = () => {
                   Apply Now
                 </h1>
 
-                <form method="dialog" onSubmit={handleApplyJob}>
+                <form ref={targetRef} method="dialog" onSubmit={handleApplyJob}>
                   <div className=" md:flex mb-0 md:mb-8">
                     <div className="form-control  md:w-1/2">
                       <label className="label">
@@ -205,12 +207,14 @@ const ViewsDetails = () => {
                       </label>
                     </div>
                   </div>
-
-                  <button
-                    type="submit"
-                    className="btn text-white bg-blue-500 hover:bg-blue-500 my-10">
-                    Apply confirm
-                  </button>
+                  <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center gap-5">
+                    <button
+                      onClick={() => toPDF()}
+                      type="submit"
+                      className="btn text-white bg-blue-500 hover:bg-blue-500 my-10">
+                      Apply confirm
+                    </button>
+                  </div>
                 </form>
                 <form method="dialog">
                   {/* if there is a button in form, it will close the modal */}
