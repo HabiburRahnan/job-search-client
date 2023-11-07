@@ -92,13 +92,13 @@ const AddAJob = () => {
         <div className=" md:flex mb-0 md:mb-8">
           <div className="form-control w-full md:w-1/2">
             <label className="label">
-              <span className="label-text">Job job type</span>
+              <span className="label-text">Job type</span>
             </label>
             <label className="input-group">
               <input
                 type="text"
                 name="job_type"
-                placeholder="Job job type"
+                placeholder="Job type"
                 className="input input-bordered w-full"
               />
             </label>

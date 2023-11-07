@@ -1,15 +1,27 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import SingleJob from "./SingleJob";
 import { Helmet } from "react-helmet";
+import { useQuery } from "@tanstack/react-query";
+import Loading from "../../ShearPages/Loading/Loading";
 
 const ViewAllJobs = () => {
   const [jobs, setJobs] = useState([]);
   const [dataLength, setDataLength] = useState(6);
-  useEffect(() => {
-    fetch("http://localhost:5000/addNewJob")
-      .then((res) => res.json())
-      .then((data) => setJobs(data));
-  }, []);
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/addNewJob")
+  //     .then((res) => res.json())
+  //     .then((data) => setJobs(data));
+  // }, []);
+
+  const { isPending } = useQuery({
+    queryKey: ["repoData"],
+    queryFn: () =>
+      fetch(`http://localhost:5000/addNewJob`)
+        .then((res) => res.json())
+        .then((data) => setJobs(data)),
+  });
+
+  if (isPending) return <Loading></Loading>;
 
   return (
     <div className="mb-10">

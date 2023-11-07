@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Provider/AuthProvider";
@@ -22,32 +22,53 @@ const ViewsDetails = () => {
   } = viewJob;
 
   const [currentDate, setCurrentDate] = useState(null);
-
+  const applyEmail = email;
   useEffect(() => {
     const timestamp = Date.now();
     const date = new Date(timestamp);
     setCurrentDate(date);
   }, []);
 
-  const handleApplyJob = () => {
-    if (applicationDate !== currentDate) {
-      if (user?.email !== email) {
+  const handleApplyJob = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const job_title = viewJob?.job_title;
+    const displayName = user?.displayName;
+    const email = user?.email;
+    const job_type = viewJob?.job_type;
+    const postingDate = viewJob?.postingDate;
+    const applicationDate = viewJob?.applicationDate;
+    const resume = form.resume.value;
+    const applyJob = {
+      job_title,
+      photo,
+      displayName,
+      job_type,
+      postingDate,
+      applicationDate,
+      resume,
+      email,
+    };
+    // console.log(applyJob);
+    if (Date.parse(applicationDate) >= currentDate) {
+      if (user?.email !== applyEmail) {
         Swal.fire("Apply Job success!", "You clicked the button!", "success");
         fetch(`http://localhost:5000/applyJob`, {
           method: "POST",
           headers: {
             "content-type": "application/json",
           },
-          body: JSON.stringify(viewJob),
+          body: JSON.stringify(applyJob),
         })
           .then((res) => res.json())
           .then((data) => {
+            console.log(data);
             if (data.insertedId) {
               Swal.fire({
                 title: "success!",
                 text: "apply Job",
                 icon: "success",
-                confirmButtonText: "Cool",
+                confirmButtonText: "ok",
               });
             }
           });
@@ -59,9 +80,16 @@ const ViewsDetails = () => {
         });
       }
     } else {
-      console.log("u have not apply");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "apply date is over!",
+      });
     }
+    btn.current.click();
   };
+
+  const btn = useRef();
 
   return (
     <div>
@@ -110,7 +138,8 @@ const ViewsDetails = () => {
                 <h1 className="text-2xl font-bold mb-10 text-blue-600 text-center">
                   Apply Now
                 </h1>
-                <form>
+
+                <form method="dialog" onSubmit={handleApplyJob}>
                   <div className=" md:flex mb-0 md:mb-8">
                     <div className="form-control  md:w-1/2">
                       <label className="label">
@@ -165,14 +194,22 @@ const ViewsDetails = () => {
                           type="url"
                           placeholder="Resume URL"
                           className="input input-bordered "
+                          required
                         />
                       </label>
                     </div>
                   </div>
+
                   <button
-                    onClick={handleApplyJob}
-                    className="btn  text-white bg-blue-500 hover:bg-blue-500 my-10">
+                    type="submit"
+                    className="btn text-white bg-blue-500 hover:bg-blue-500 my-10">
                     Apply confirm
+                  </button>
+                </form>
+                <form method="dialog">
+                  {/* if there is a button in form, it will close the modal */}
+                  <button ref={btn} className="btn hidden">
+                    Close
                   </button>
                 </form>
               </div>

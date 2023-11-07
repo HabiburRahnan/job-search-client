@@ -18,6 +18,9 @@ import MyJob from "./Pages/MyJob/MyJob.jsx";
 import ViewAllJobs from "./Pages/ViewAllJobs/ViewAllJobs.jsx";
 import ViewsDetails from "./Components/ViewsDetails/ViewsDetails.jsx";
 import UpdateJob from "./Pages/UpdateJob/UpdateJob.jsx";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -32,7 +35,11 @@ const router = createBrowserRouter([
 
       {
         path: "/appliedJobs",
-        element: <AppliedJobs></AppliedJobs>,
+        element: (
+          <PrivetRoute>
+            <AppliedJobs></AppliedJobs>
+          </PrivetRoute>
+        ),
       },
       {
         path: "/viewsDetails/:id",
@@ -46,15 +53,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/viewAllJobs",
-        element: (
-          <PrivetRoute>
-            <ViewAllJobs></ViewAllJobs>
-          </PrivetRoute>
-        ),
+        element: <ViewAllJobs></ViewAllJobs>,
       },
       {
         path: "/addJob",
-        element: <AddAJob></AddAJob>,
+        element: (
+          <PrivetRoute>
+            <AddAJob></AddAJob>
+          </PrivetRoute>
+        ),
       },
       {
         path: "/blog",
@@ -70,16 +77,28 @@ const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <Profile></Profile>,
+        element: (
+          <PrivetRoute>
+            <Profile></Profile>
+          </PrivetRoute>
+        ),
       },
       {
         path: "/myJob",
-        element: <MyJob></MyJob>,
+        element: (
+          <PrivetRoute>
+            <MyJob></MyJob>
+          </PrivetRoute>
+        ),
       },
 
       {
         path: "/updateJob/:id",
-        element: <UpdateJob></UpdateJob>,
+        element: (
+          <PrivetRoute>
+            <UpdateJob></UpdateJob>
+          </PrivetRoute>
+        ),
         loader: (params) =>
           fetch(`http://localhost:5000/addNewJob/${params.params.id}`),
       },
@@ -89,9 +108,11 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router} />
-      <Toaster></Toaster>
-    </AuthProvider>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <RouterProvider router={router} />
+        <Toaster></Toaster>
+      </AuthProvider>
+    </QueryClientProvider>
   </React.StrictMode>
 );

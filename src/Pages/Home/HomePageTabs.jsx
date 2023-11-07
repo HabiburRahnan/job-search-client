@@ -4,10 +4,10 @@ import FullTime from "./FullTime.jsx";
 import PartTime from "./PartTime.jsx";
 import Remote from "./Remote.jsx";
 import AllJob from "./AllJob.jsx";
-
 const HomePageTabs = () => {
   const [jobs, setJobs] = useState([]);
   const [dataLength, setDataLength] = useState(6);
+
   useEffect(() => {
     fetch("http://localhost:5000/addNewJob")
       .then((res) => res.json())
@@ -29,7 +29,6 @@ const HomePageTabs = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-0 md:gap-5 mt-10">
               {jobs?.slice(0, dataLength)?.map((job, index) => (
                 <>
-                
                   <AllJob key={index} jobs={job}></AllJob>
                 </>
               ))}
@@ -38,7 +37,7 @@ const HomePageTabs = () => {
             <div className={dataLength === jobs.length ? "hidden" : ""}>
               <button
                 onClick={() => setDataLength(jobs.length)}
-                className="btn bg-[#3878E8] hover:bg-[#3878E8] text-white ">
+                className="btn  bg-[#3878E8] hover:bg-[#3878E8] text-white mt-5 items-center ">
                 Show All Jobs
               </button>
             </div>

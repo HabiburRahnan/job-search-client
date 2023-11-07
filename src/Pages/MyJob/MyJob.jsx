@@ -4,7 +4,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import MySingleJob from "./MySingleJob";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
-// import axios from "axios";
+import axios from "axios";
 
 const MyJob = () => {
   const { user } = useContext(AuthContext);
@@ -13,16 +13,16 @@ const MyJob = () => {
   const url = `http://localhost:5000/job?email=${user?.email}`;
 
   useEffect(() => {
-    // axios(url, { withCredentials: true }).then((res) => {
-    //   setMyAllJObs(res.data);
-    // });
+    axios(url, { withCredentials: true }).then((res) => {
+      setMyAllJObs(res?.data);
+    });
 
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setMyAllJObs(data);
-      });
+    // fetch(url)
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data);
+    //     setMyAllJObs(data);
+    //   });
   }, [url]);
   const handleDelete = (id) => {
     Swal.fire({

@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "image": "icn1.svg",
+    "title": "Hand-Screened and Verified Jobs",
+    "description": "We see every job before you do. You only see the best hybrid and remote jobs–no ads, scams or junk!"
+  },
+  {
+    "id": 2,
+    "image": "icn2.svg",
+    "title": "In-house career experts",
+    "description": "Our fantastic in-house career experts specialize in remote and flexible job search guidance! Join weekly events and webinars for free."
+  },
+  {
+    "id": 3,
+    "image": "icn3.svg",
+    "title": " Top-notch friendly, helpful customer support",
+    "description": "We have intelligent, friendly client support folks who you can easily talk to, and who genuinely care about helping you have a good experience."
+  },
+  {
+    "id": 4,
+    "image": "icn4.svg",
+    "title": "Exclusive research on employers",
+    "description": "Leverage exclusive hiring information on 50,000+ vetted companies to help find the right employer, culture, and job."
+  },
+  {
+    "id": 5,
+    "image": "icn5.svg",
+    "title": "Skills tests, job search checklists, and more",
+    "description": "Increase your chances of online job search success with in-depth resources, unlimited skills tests, and expert content."
+  },
+  {
+    "id": 6,
+    "image": "icn6.svg",
+    "title": "Money-Back Guarantee",
+    "description": "We want you to be happy with our service, and if for any reason you’re not, simply request a refund within 14 days. It’s that easy."
+  }
+]
