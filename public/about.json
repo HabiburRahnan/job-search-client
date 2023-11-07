@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "name": "Ingrid N.",
+    "company": "•  New Baden, IL",
+    "image": "https://i.ibb.co/mG7QC0W/ss-lori2.jpg",
+    "description": "I loved using Job-Search! I found a great remote job and am so grateful!"
+  },
+
+  {
+    "id": 2,
+    "name": "Jacob V.",
+    "company": "•  Brooksville, FL",
+    "image": "https://i.ibb.co/rM8snDj/ss-sergey2.jpg",
+    "description": "I found a job with higher pay and better benefits! My only regret is not becoming a Job-Search member the first time I visited the site."
+  },
+  {
+    "id": 3,
+    "name": "Tarrah L.",
+    "company": "•  Spring Lake, NC",
+    "image": "https://i.ibb.co/qYGRTL8/ss-tamiko2.jpg",
+    "description": "Job-Search is the best job resource out there! It is so user-friendly and has high-quality job listings."
+  }
+]
