@@ -75,10 +75,10 @@ const Blogs = () => {
       <div>
         <div className="relative border-s-8 border-[#3878E8] ps-3">
           <h2 className="text-xl md:text-3xl font-bold">
-            Front-End (React with Tailwind CSS and DaisyUI ):
+            Front-End (React with Tailwind CSS, material and DaisyUI ):
           </h2>
           <p className="absolute bottom-0 text-5xl -z-10 opacity-5">
-            Front-End (React with Tailwind CSS and DaisyUI ):
+            Front-End (React with Tailwind CSS, material and DaisyUI ):
           </p>
         </div>
         <p className="text-xl py-5">

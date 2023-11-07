@@ -5,12 +5,13 @@ import { FcGoogle } from "react-icons/fc";
 
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
+import axios from "axios";
 
 const Login = () => {
   const { singIn, signInWithGoogle } = useContext(AuthContext);
 
-  const location = useLocation();
-  const navigate = useNavigate();
+  // const location = useLocation();
+  // const navigate = useNavigate();
 
   const handleGoogleSignIn = () => {
     signInWithGoogle()
@@ -24,9 +25,8 @@ const Login = () => {
     const password = form.password.value;
 
     singIn(email, password)
-      .then(() => {
-        navigate(location?.state ? location.state : "/");
-        Swal.fire("success Login!", "thank you!", "success");
+      .then((result) => {
+        
       })
       .catch(() => {
         Swal.fire(

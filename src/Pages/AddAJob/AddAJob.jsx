@@ -83,6 +83,7 @@ const AddAJob = () => {
               <input
                 name="userName"
                 type="text"
+                readOnly
                 defaultValue={user?.displayName}
                 className="input input-bordered w-full"
               />

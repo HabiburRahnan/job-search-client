@@ -149,6 +149,7 @@ const ViewsDetails = () => {
                         <input
                           type="text"
                           name="job_title"
+                          readOnly
                           placeholder="Job Title"
                           defaultValue={job_title}
                           className="input input-bordered "
@@ -163,6 +164,7 @@ const ViewsDetails = () => {
                         <input
                           name="userName"
                           type="text"
+                          readOnly
                           defaultValue={user?.displayName}
                           className="input input-bordered "
                         />
@@ -179,6 +181,7 @@ const ViewsDetails = () => {
                           type="text"
                           name="Email"
                           placeholder="Email"
+                          readOnly
                           defaultValue={user.email}
                           className="input input-bordered "
                         />
