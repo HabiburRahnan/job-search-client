@@ -34,9 +34,9 @@ const HomePageTabs = () => {
               ))}
             </div>
 
-            <div className={dataLength === jobs.length ? "hidden" : ""}>
+            <div className={dataLength === jobs?.length ? "hidden" : ""}>
               <button
-                onClick={() => setDataLength(jobs.length)}
+                onClick={() => setDataLength(jobs?.length)}
                 className="btn  bg-[#3878E8] hover:bg-[#3878E8] text-white mt-5 items-center ">
                 Show All Jobs
               </button>

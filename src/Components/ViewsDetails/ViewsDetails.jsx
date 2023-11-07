@@ -130,7 +130,7 @@ const ViewsDetails = () => {
             <button
               className="btn  text-white bg-blue-500 hover:bg-blue-500 my-10"
               onClick={() => document.getElementById("my_modal_5").showModal()}>
-              Apply Now
+              Apply This Job
             </button>
 
             <dialog id="my_modal_5" className="modal  modal-middle">
@@ -150,6 +150,7 @@ const ViewsDetails = () => {
                           type="text"
                           name="job_title"
                           readOnly
+                          required
                           placeholder="Job Title"
                           defaultValue={job_title}
                           className="input input-bordered "
@@ -165,6 +166,7 @@ const ViewsDetails = () => {
                           name="userName"
                           type="text"
                           readOnly
+                          required
                           defaultValue={user?.displayName}
                           className="input input-bordered "
                         />
@@ -182,6 +184,7 @@ const ViewsDetails = () => {
                           name="Email"
                           placeholder="Email"
                           readOnly
+                          required
                           defaultValue={user.email}
                           className="input input-bordered "
                         />

@@ -14,11 +14,12 @@ import { AuthContext } from "../../Provider/AuthProvider";
 
 const AppliedJobs = () => {
   const { user } = useContext(AuthContext);
-  console.log(user?.email);
+  // console.log(user?.email);
   const [jobs, setJobs] = useState([]);
 
   const { isLoading } = useQuery({
     queryKey: ["repoData"],
+
     queryFn: () =>
       fetch(`http://localhost:5000/applyJob`)
         .then((res) => res.json())

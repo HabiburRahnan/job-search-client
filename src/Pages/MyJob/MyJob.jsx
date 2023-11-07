@@ -13,8 +13,8 @@ const MyJob = () => {
   const url = `http://localhost:5000/job?email=${user?.email}`;
 
   useEffect(() => {
-    axios(url, { withCredentials: true }).then((res) => {
-      setMyAllJObs(res?.data);
+    axios.get(url, { withCredentials: true }).then((res) => {
+      setMyAllJObs(res.data);
     });
 
     // fetch(url)

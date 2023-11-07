@@ -15,7 +15,7 @@ const Home = () => {
       .then((res) => res.json())
       .then((data) => setAbout(data));
   }, []);
-  console.log(about);
+  // console.log(about);
   const { isLoading } = useQuery({
     queryKey: ["repoData"],
     queryFn: () =>

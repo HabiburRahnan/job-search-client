@@ -72,6 +72,7 @@ const AddAJob = () => {
                 name="job_title"
                 placeholder="Job Title"
                 className="input input-bordered w-full"
+                required
               />
             </label>
           </div>
@@ -100,6 +101,7 @@ const AddAJob = () => {
                 type="text"
                 name="job_type"
                 placeholder="Job type"
+                required
                 className="input input-bordered w-full"
               />
             </label>
@@ -113,6 +115,7 @@ const AddAJob = () => {
                 name="salary"
                 type="text"
                 placeholder="Salary Range"
+                required
                 className="input input-bordered w-full"
               />
             </label>
@@ -128,6 +131,7 @@ const AddAJob = () => {
                 type="text"
                 name="photo"
                 placeholder="photo url"
+                required
                 className="input input-bordered w-full"
               />
             </label>
@@ -143,6 +147,7 @@ const AddAJob = () => {
                 type="text"
                 name="description"
                 placeholder="Description"
+                required
                 className="input input-bordered w-full"
               />
             </label>
@@ -158,6 +163,7 @@ const AddAJob = () => {
                 type="date"
                 name="postingDate"
                 placeholder="date"
+                required
                 className="input input-bordered"
               />
             </label>
@@ -172,6 +178,7 @@ const AddAJob = () => {
                 type="date"
                 name="applicationDate"
                 placeholder="date"
+                required
                 className="input input-bordered"
               />
             </label>

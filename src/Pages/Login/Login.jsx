@@ -10,8 +10,8 @@ import axios from "axios";
 const Login = () => {
   const { singIn, signInWithGoogle } = useContext(AuthContext);
 
-  // const location = useLocation();
-  // const navigate = useNavigate();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleGoogleSignIn = () => {
     signInWithGoogle()
@@ -26,7 +26,21 @@ const Login = () => {
 
     singIn(email, password)
       .then((result) => {
-        
+        const loggedInUser = result.user;
+        // console.log(loggedInUser);
+
+        Swal.fire("success Login!", "thank you!", "success");
+        const user = { email };
+
+        // get access token
+        axios
+          .post("http://localhost:5000/jwt", user, { withCredentials: true })
+          .then((res) => {
+            console.log(res.data);
+            if (res.data) {
+              navigate(location?.state ? location.state : "/");
+            }
+          });
       })
       .catch(() => {
         Swal.fire(
