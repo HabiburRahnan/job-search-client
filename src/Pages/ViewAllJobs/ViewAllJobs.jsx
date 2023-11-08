@@ -15,7 +15,7 @@ const ViewAllJobs = () => {
   const { isPending } = useQuery({
     queryKey: ["repoData"],
     queryFn: () =>
-      fetch(`http://localhost:5000/addNewJob`)
+      fetch(`https://job-search-server-site.vercel.app/addNewJob`)
         .then((res) => res.json())
         .then((data) => setJobs(data)),
   });

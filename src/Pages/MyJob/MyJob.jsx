@@ -10,7 +10,7 @@ const MyJob = () => {
   const { user } = useContext(AuthContext);
   const [myAllJObs, setMyAllJObs] = useState([]);
 
-  const url = `http://localhost:5000/job?email=${user?.email}`;
+  const url = `https://job-search-server-site.vercel.app/job?email=${user?.email}`;
 
   useEffect(() => {
     axios.get(url, { withCredentials: true }).then((res) => {
@@ -36,7 +36,7 @@ const MyJob = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/addNewJob/${id}`, {
+        fetch(`https://job-search-server-site.vercel.app/addNewJob/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

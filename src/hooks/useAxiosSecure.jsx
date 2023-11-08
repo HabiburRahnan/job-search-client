@@ -5,7 +5,7 @@
 // import { useNavigate } from "react-router-dom";
 
 // const axiosSecure = axios.create({
-//   basedURL: "http://localhost:5000",
+//   basedURL: "https://job-search-server-site.vercel.app",
 //   withCredentials: true,
 // });
 

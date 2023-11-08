@@ -38,7 +38,7 @@ const AddAJob = () => {
     };
     console.log(addNewJob);
 
-    fetch(`http://localhost:5000/addNewJob`, {
+    fetch(`https://job-search-server-site.vercel.app/addNewJob`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -47,9 +47,8 @@ const AddAJob = () => {
     })
       .then((res) => res.json())
 
-      // axios.post("http://localhost:5000/addNewJob", addNewJob)
       .then((data) => {
-        if (data.data.insertedId) {
+        if (data.insertedId) {
           Swal.fire("Jobs add successfully", "thank you!", "success");
         }
       });

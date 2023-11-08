@@ -9,7 +9,7 @@ const HomePageTabs = () => {
   const [dataLength, setDataLength] = useState(6);
 
   useEffect(() => {
-    fetch("http://localhost:5000/addNewJob")
+    fetch("https://job-search-server-site.vercel.app/addNewJob")
       .then((res) => res.json())
       .then((data) => setJobs(data));
   }, []);
@@ -46,7 +46,7 @@ const HomePageTabs = () => {
         <TabPanel>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-0 md:gap-5 mt-10">
             {jobs?.map((job, index) =>
-              job?.job_type == "Full-Time" ? (
+              job?.job_type == "Full-Time" || job?.job_type == "Full Time" ? (
                 <FullTime key={index} jobs={job}></FullTime>
               ) : (
                 ""
@@ -57,7 +57,7 @@ const HomePageTabs = () => {
         <TabPanel>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-0 md:gap-5 mt-10">
             {jobs?.map((job, index) =>
-              job?.job_type == "Part-Time" ? (
+              job?.job_type == "Part-Time" || job?.job_type == "Part Time" ? (
                 <PartTime key={index} jobs={job}></PartTime>
               ) : (
                 ""

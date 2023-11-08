@@ -24,14 +24,14 @@ const AppliedJobs = () => {
     queryKey: ["repoData"],
 
     queryFn: () =>
-      fetch(`http://localhost:5000/applyJob`, {
+      fetch(`https://job-search-server-site.vercel.app/applyJob`, {
         credentials: "include",
       })
         .then((res) => res.json())
         .then((data) => setJobs(data)),
     // useEffect(() => {
     //   axiosSecure.get(url).then((res) => setJobs(res.data));
-    // }, [axiosSecure]);
+    // }, [axiosSecure])
   });
 
   if (isLoading) return <Loading></Loading>;
@@ -69,7 +69,8 @@ const AppliedJobs = () => {
           <TabPanel>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-0 md:gap-5 mt-10">
               {jobs?.map((job, index) =>
-                job?.job_type == "Full-Time" && job?.email == user?.email ? (
+                job?.job_type == "Full-Time" ||
+                (job?.job_type == "Full Time" && job?.email == user?.email) ? (
                   <FullTime key={index} jobs={job}></FullTime>
                 ) : (
                   ""
@@ -80,7 +81,8 @@ const AppliedJobs = () => {
           <TabPanel>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-0 md:gap-5 mt-10">
               {jobs?.map((job, index) =>
-                job?.job_type == "Part-Time" && job?.email == user?.email ? (
+                job?.job_type == "Part-Time" ||
+                (job?.job_type == "Part Time" && job?.email == user?.email) ? (
                   <PartTime key={index} jobs={job}></PartTime>
                 ) : (
                   ""

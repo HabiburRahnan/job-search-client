@@ -34,7 +34,7 @@ const Login = () => {
 
         // get access token
         axios
-          .post("http://localhost:5000/jwt", user, {
+          .post("https://job-search-server-site.vercel.app/jwt", user, {
             withCredentials: true,
           })
           .then((res) => {
