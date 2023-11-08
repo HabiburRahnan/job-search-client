@@ -3,6 +3,7 @@ import Title from "../../Components/Title";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
+// import axios from "axios";
 // import DatePicker from "react-datepicker";
 
 const AddAJob = () => {
@@ -37,7 +38,7 @@ const AddAJob = () => {
     };
     console.log(addNewJob);
 
-    fetch(`https://job-search-server-gamma.vercel.app/addNewJob`, {
+    fetch(`http://localhost:5000/addNewJob`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -45,8 +46,10 @@ const AddAJob = () => {
       body: JSON.stringify(addNewJob),
     })
       .then((res) => res.json())
+
+      // axios.post("http://localhost:5000/addNewJob", addNewJob)
       .then((data) => {
-        if (data.insertedId) {
+        if (data.data.insertedId) {
           Swal.fire("Jobs add successfully", "thank you!", "success");
         }
       });

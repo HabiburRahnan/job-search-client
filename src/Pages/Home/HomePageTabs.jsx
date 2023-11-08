@@ -9,7 +9,7 @@ const HomePageTabs = () => {
   const [dataLength, setDataLength] = useState(6);
 
   useEffect(() => {
-    fetch("https://job-search-server-gamma.vercel.app/addNewJob")
+    fetch("http://localhost:5000/addNewJob")
       .then((res) => res.json())
       .then((data) => setJobs(data));
   }, []);

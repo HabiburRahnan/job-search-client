@@ -10,11 +10,12 @@ const MyJob = () => {
   const { user } = useContext(AuthContext);
   const [myAllJObs, setMyAllJObs] = useState([]);
 
-  const url = `https://job-search-server-gamma.vercel.app/job?email=${user?.email}`;
+  const url = `http://localhost:5000/job?email=${user?.email}`;
 
   useEffect(() => {
     axios.get(url, { withCredentials: true }).then((res) => {
-      setMyAllJObs(res.data);
+      console.log(res.data);
+      setMyAllJObs(res?.data);
     });
 
     // fetch(url)
@@ -35,7 +36,7 @@ const MyJob = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://job-search-server-gamma.vercel.app/addNewJob/${id}`, {
+        fetch(`http://localhost:5000/addNewJob/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

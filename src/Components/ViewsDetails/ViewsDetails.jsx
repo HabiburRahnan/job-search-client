@@ -55,7 +55,7 @@ const ViewsDetails = () => {
     if (Date.parse(applicationDate) >= currentDate) {
       if (user?.email !== applyEmail) {
         Swal.fire("Apply Job success!", "You clicked the button!", "success");
-        fetch(`https://job-search-server-gamma.vercel.app/applyJob`, {
+        fetch(`http://localhost:5000/applyJob`, {
           method: "POST",
           headers: {
             "content-type": "application/json",

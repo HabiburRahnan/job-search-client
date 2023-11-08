@@ -49,9 +49,7 @@ const router = createBrowserRouter([
           </PrivetRoute>
         ),
         loader: ({ params }) =>
-          fetch(
-            `https://job-search-server-gamma.vercel.app/addNewJob/${params.id}`
-          ),
+          fetch(`http://localhost:5000/addNewJob/${params.id}`),
       },
       {
         path: "/viewAllJobs",
@@ -102,9 +100,7 @@ const router = createBrowserRouter([
           </PrivetRoute>
         ),
         loader: (params) =>
-          fetch(
-            `https://job-search-server-gamma.vercel.app/addNewJob/${params.params.id}`
-          ),
+          fetch(`http://localhost:5000/addNewJob/${params.params.id}`),
       },
     ],
   },

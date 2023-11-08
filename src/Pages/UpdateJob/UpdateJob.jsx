@@ -47,7 +47,7 @@ const UpdateJob = () => {
       applicationNumber,
     };
     console.log(UpdatedJob);
-    fetch(`https://job-search-server-gamma.vercel.app/addNewJob/${_id}`, {
+    fetch(`http://localhost:5000/addNewJob/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

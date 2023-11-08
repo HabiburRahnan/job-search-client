@@ -24,7 +24,7 @@ const AppliedJobs = () => {
     queryKey: ["repoData"],
 
     queryFn: () =>
-      fetch(`https://job-search-server-gamma.vercel.app/applyJob`, {
+      fetch(`http://localhost:5000/applyJob`, {
         credentials: "include",
       })
         .then((res) => res.json())
