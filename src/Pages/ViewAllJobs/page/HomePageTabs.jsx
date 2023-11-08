@@ -1,34 +1,21 @@
-import { useState } from "react";
-import { Helmet } from "react-helmet";
-import { useQuery } from "@tanstack/react-query";
-import Loading from "../../ShearPages/Loading/Loading";
+import { useEffect, useState } from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
-import AllJob from "./page/AllJob";
-import FullTime from "./page/FullTime";
-import PartTime from "./page/PartTime";
-import Remote from "./page/Remote";
-
-const ViewAllJobs = () => {
+import FullTime from "./FullTime.jsx";
+import PartTime from "./PartTime.jsx";
+import Remote from "./Remote.jsx";
+import AllJob from "./AllJob.jsx";
+const HomePageTabs = () => {
   const [jobs, setJobs] = useState([]);
   const [dataLength, setDataLength] = useState(6);
 
-  const { isPending } = useQuery({
-    queryKey: ["repoData"],
-    queryFn: () =>
-      fetch(`http://localhost:5000/addNewJob`)
-        .then((res) => res.json())
-        .then((data) => setJobs(data)),
-  });
-
-  if (isPending) return <Loading></Loading>;
+  useEffect(() => {
+    fetch("http://localhost:5000/addNewJob")
+      .then((res) => res.json())
+      .then((data) => setJobs(data));
+  }, []);
 
   return (
     <div className="mb-10">
-      <Helmet>
-        <meta charset="utf-8" />
-        <title>AllJobs | Job Search</title>
-        <link rel="canonical" href="http://mysite.com/example" />
-      </Helmet>
       <Tabs>
         <TabList className=" grid grid-cols-2 md:grid-cols-4 text-center items-center py-2 md:py-5 gap-5 md:gap-10 tabItem  ">
           <Tab className="border border-blue-600 rounded-xl">All Jobs</Tab>
@@ -94,4 +81,4 @@ const ViewAllJobs = () => {
   );
 };
 
-export default ViewAllJobs;
+export default HomePageTabs;

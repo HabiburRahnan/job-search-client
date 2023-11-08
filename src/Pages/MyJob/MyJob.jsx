@@ -14,7 +14,7 @@ const MyJob = () => {
 
   useEffect(() => {
     axios.get(url, { withCredentials: true }).then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       setMyAllJObs(res?.data);
     });
 
