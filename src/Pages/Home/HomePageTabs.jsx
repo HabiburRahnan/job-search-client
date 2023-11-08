@@ -4,6 +4,7 @@ import FullTime from "./FullTime.jsx";
 import PartTime from "./PartTime.jsx";
 import Remote from "./Remote.jsx";
 import AllJob from "./AllJob.jsx";
+
 const HomePageTabs = () => {
   const [jobs, setJobs] = useState([]);
   const [dataLength, setDataLength] = useState(6);

@@ -19,6 +19,7 @@ import ViewAllJobs from "./Pages/ViewAllJobs/ViewAllJobs.jsx";
 import ViewsDetails from "./Components/ViewsDetails/ViewsDetails.jsx";
 import UpdateJob from "./Pages/UpdateJob/UpdateJob.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import CareerAdvice from "./Pages/CareerAdvice/CareerAdvice.jsx";
 
 const queryClient = new QueryClient();
 
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         path: "/viewAllJobs",
         element: <ViewAllJobs></ViewAllJobs>,
+      },
+      {
+        path: "/career",
+        element: <CareerAdvice></CareerAdvice>,
       },
       {
         path: "/addJob",
