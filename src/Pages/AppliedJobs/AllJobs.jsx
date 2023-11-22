@@ -1,13 +1,14 @@
+/* eslint-disable react/prop-types */
 import {
   Card,
   CardHeader,
   CardBody,
   Typography,
 } from "@material-tailwind/react";
-const AllJobs = (job) => {
-  const { job_title, photo, displayName, job_type, email } = job.jobs;
+const AllJobs = ({ jobs }) => {
+  const { job_title, photo, displayName, job_type, email } = jobs;
   return (
-    <Card className="mt-6 md:w-96 ">
+    <Card className="mt-6 md:w-96 mx-5">
       <CardHeader color="blue-gray" className="relative h-56">
         <img src={photo} alt="card-image" />
       </CardHeader>

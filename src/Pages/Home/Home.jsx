@@ -40,10 +40,10 @@ const Home = () => {
       <HomePageTabs></HomePageTabs>
       <div className="pb-5">
         <h1 className="text-xl md:text-4xl text-center font-bold text-orange-500 py-5">
-          The Benefits of Using FlexJobs
+          The Benefits of Using job search
         </h1>
 
-        <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-center items-center py-2 md:py-5 gap-5 md:gap-10 ">
+        <div className=" grid grid-cols-1 mx-5 md:grid-cols-2 lg:grid-cols-3 text-center items-center py-2 md:py-5 gap-5 md:gap-10 ">
           {data?.map((item) => (
             <div
               key={item.id}
@@ -67,7 +67,7 @@ const Home = () => {
           What Our Customers are Saying About Us
         </h1>
 
-        <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-center items-center py-2 md:py-5 gap-5 md:gap-10 ">
+        <div className=" grid grid-cols-1 md:grid-cols-2 mx-5 lg:grid-cols-3 text-center items-center py-2 md:py-5 gap-5 md:gap-10 ">
           {about?.map((item) => (
             <div
               key={item.id}

@@ -5,9 +5,10 @@ import {
   Typography,
 } from "@material-tailwind/react";
 const FullTime = (job) => {
+  console.log(job);
   const { job_title, photo, displayName, job_type, email } = job.jobs;
   return (
-    <Card className="mt-6 lg:w-96 ">
+    <Card className="mt-6 lg:w-96 mx-5">
       <CardHeader color="blue-gray" className="relative h-56">
         <img src={photo} alt="card-image" />
       </CardHeader>

@@ -14,7 +14,7 @@ const Remote = (job) => {
     applicationDate,
   } = job.jobs;
   return (
-    <div className="card-body h-96 mt-5 md:mt-10 border rounded-md border-blue-500">
+    <div className="card-body h-96 mt-5 mx-5 md:mt-10 border rounded-md border-blue-500">
       <Helmet>
         <meta charset="utf-8" />
         <title>Remote | Job Search</title>

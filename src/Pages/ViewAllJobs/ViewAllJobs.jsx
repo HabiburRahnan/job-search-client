@@ -39,7 +39,7 @@ const ViewAllJobs = () => {
 
         <TabPanel>
           <div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-0 md:gap-5 mt-10">
+            <div className="grid grid-cols-1 mx-5 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-0 md:gap-5 mt-10">
               {jobs?.slice(0, dataLength)?.map((job, index) => (
                 <>
                   <AllJob key={index} jobs={job}></AllJob>
@@ -57,7 +57,7 @@ const ViewAllJobs = () => {
           </div>
         </TabPanel>
         <TabPanel>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-0 md:gap-5 mt-10">
+          <div className="grid grid-cols-1 mx-5 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-0 md:gap-5 mt-10">
             {jobs?.map((job, index) =>
               job?.job_type == "Full-Time" ? (
                 <FullTime key={index} jobs={job}></FullTime>
@@ -68,7 +68,7 @@ const ViewAllJobs = () => {
           </div>
         </TabPanel>
         <TabPanel>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-0 md:gap-5 mt-10">
+          <div className="grid grid-cols-1 mx-5 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-0 md:gap-5 mt-10">
             {jobs?.map((job, index) =>
               job?.job_type == "Part-Time" ? (
                 <PartTime key={index} jobs={job}></PartTime>
@@ -79,7 +79,7 @@ const ViewAllJobs = () => {
           </div>
         </TabPanel>
         <TabPanel>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-0 md:gap-5 mt-10">
+          <div className="grid grid-cols-1 mx-5 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-0 md:gap-5 mt-10">
             {jobs?.map((job, index) =>
               job?.job_type == "Remote" ? (
                 <Remote key={index} jobs={job}></Remote>

@@ -14,7 +14,7 @@ const AllJob = (job) => {
   } = job.jobs;
 
   return (
-    <div className="card-body h-80 mt-5 md:mt-10 md:h-96 border rounded-md border-blue-500">
+    <div className="card-body h-80 mt-5 mx-5  md:mt-10 md:h-96 border rounded-md border-blue-500">
       <p className="card-title text-xl md:text-3xl font-extrabold text-blue-600">
         {job_title}
       </p>

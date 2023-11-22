@@ -14,7 +14,7 @@ const SingleJob = ({ job }) => {
     applicationDate,
   } = job;
   return (
-    <div className="card-body h-96 border rounded-md border-blue-500 mt-5">
+    <div className="card-body h-96  border rounded-md border-blue-500 mt-5">
       <p className="card-title text-xl md:text-3xl font-extrabold text-blue-600">
         {job_title}
       </p>

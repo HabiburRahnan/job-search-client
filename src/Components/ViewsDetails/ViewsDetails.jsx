@@ -25,6 +25,7 @@ const ViewsDetails = () => {
 
   const [currentDate, setCurrentDate] = useState(null);
   const applyEmail = email;
+
   useEffect(() => {
     const timestamp = Date.now();
     const date = new Date(timestamp);
@@ -36,7 +37,7 @@ const ViewsDetails = () => {
     const form = e.target;
     const job_title = viewJob?.job_title;
     const displayName = user?.displayName;
-    const email = user?.email;
+    const email = form.email.value;
     const job_type = viewJob?.job_type;
     const postingDate = viewJob?.postingDate;
     const applicationDate = viewJob?.applicationDate;
@@ -129,12 +130,15 @@ const ViewsDetails = () => {
               <p>Job Type: {job_type}</p>
               <p>Applicants:{applicationNumber}</p>
             </div>
-            <button
-              className="btn  text-white bg-blue-500 hover:bg-blue-500 my-10"
-              onClick={() => document.getElementById("my_modal_5").showModal()}>
-              Apply This Job
-            </button>
-
+            {
+              <button
+                className="btn  text-white bg-blue-500 hover:bg-blue-500 my-10"
+                onClick={() =>
+                  document.getElementById("my_modal_5").showModal()
+                }>
+                Apply This Job
+              </button>
+            }
             <dialog id="my_modal_5" className="modal  modal-middle">
               <div className="modal-box ">
                 <h1 className="text-2xl font-bold mb-10 text-blue-600 text-center">
@@ -183,11 +187,11 @@ const ViewsDetails = () => {
                       <label className="input-group">
                         <input
                           type="text"
-                          name="Email"
+                          name="email"
                           placeholder="Email"
                           readOnly
                           required
-                          defaultValue={user.email}
+                          defaultValue={user?.email}
                           className="input input-bordered "
                         />
                       </label>

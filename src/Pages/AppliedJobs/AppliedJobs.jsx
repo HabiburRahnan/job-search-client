@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet";
 import Title from "../../Components/Title";
-import { useQuery } from "@tanstack/react-query";
+// import { useQuery } from "@tanstack/react-query";
 
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import { useState } from "react";
@@ -11,30 +11,24 @@ import Remote from "./Remote";
 import Loading from "../../ShearPages/Loading/Loading";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
-// import useAxiosSecure from "../../hooks/useAxiosSecure";
-// import { useEffect } from "react";
+import { useEffect } from "react";
 
 const AppliedJobs = () => {
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
   const [jobs, setJobs] = useState([]);
-  // const axiosSecure = useAxiosSecure();
-  // const url = "/applyJob";
+  console.log(jobs);
 
-  const { isLoading } = useQuery({
-    queryKey: ["repoData"],
+  useEffect(() => {
+    fetch("https://job-search-server-site.vercel.app/applyJob", {
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then((data) =>
+        data.filter((job) => (user?.email === job?.email ? setJobs(job) : ""))
+      );
+  }, [user?.email]);
 
-    queryFn: () =>
-      fetch(`https://job-search-server-site.vercel.app/applyJob`, {
-        credentials: "include",
-      })
-        .then((res) => res.json())
-        .then((data) => setJobs(data)),
-    // useEffect(() => {
-    //   axiosSecure.get(url).then((res) => setJobs(res.data));
-    // }, [axiosSecure])
-  });
-
-  if (isLoading) return <Loading></Loading>;
+  if (loading) return <Loading></Loading>;
   return (
     <div>
       <Helmet>
@@ -56,49 +50,31 @@ const AppliedJobs = () => {
           <TabPanel>
             <div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-0 md:gap-1 lg:gap-5 mt-10">
-                {jobs?.map((job, index) =>
-                  job?.email == user?.email ? (
-                    <AllJobs key={index} jobs={job}></AllJobs>
-                  ) : (
-                    ""
-                  )
-                )}
+                <AllJobs jobs={jobs}></AllJobs>
               </div>
             </div>
           </TabPanel>
           <TabPanel>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-0 md:gap-5 mt-10">
-              {jobs?.map((job, index) =>
-                job?.job_type == "Full-Time" ||
-                (job?.job_type == "Full Time" && job?.email == user?.email) ? (
-                  <FullTime key={index} jobs={job}></FullTime>
-                ) : (
-                  ""
-                )
+              {jobs?.job_type == "Full-Time" ? (
+                <FullTime jobs={jobs}></FullTime>
+              ) : (
+                ""
               )}
             </div>
           </TabPanel>
           <TabPanel>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-0 md:gap-5 mt-10">
-              {jobs?.map((job, index) =>
-                job?.job_type == "Part-Time" ||
-                (job?.job_type == "Part Time" && job?.email == user?.email) ? (
-                  <PartTime key={index} jobs={job}></PartTime>
-                ) : (
-                  ""
-                )
+              {jobs?.job_type == "Part-Time" ? (
+                <PartTime jobs={jobs}></PartTime>
+              ) : (
+                ""
               )}
             </div>
           </TabPanel>
           <TabPanel>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-0 md:gap-5 mt-10">
-              {jobs?.map((job, index) =>
-                job?.job_type == "Remote" && job?.email == user?.email ? (
-                  <Remote key={index} jobs={job}></Remote>
-                ) : (
-                  ""
-                )
-              )}
+              {jobs?.job_type == "Remote" ? <Remote jobs={jobs}></Remote> : ""}
             </div>
           </TabPanel>
         </Tabs>

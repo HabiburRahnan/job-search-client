@@ -10,7 +10,7 @@ const MyJob = () => {
   const { user } = useContext(AuthContext);
   const [myAllJObs, setMyAllJObs] = useState([]);
 
-  const url = `https://job-search-server-site.vercel.app/job?email=${user?.email}`;
+  const url = `https://job-search-server-site.vercel.app/addNewJob?email=${user?.email}`;
 
   useEffect(() => {
     axios.get(url, { withCredentials: true }).then((res) => {
